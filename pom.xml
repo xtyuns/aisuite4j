@@ -6,7 +6,7 @@
 
     <groupId>io.github.xtyuns</groupId>
     <artifactId>aisuite4j</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>aisuite4j</name>
@@ -15,7 +15,7 @@
     <licenses>
         <license>
             <name>MIT License</name>
-            <url>http://www.opensource.org/licenses/mit-license.php</url>
+            <url>https://opensource.org/license/mit</url>
         </license>
     </licenses>
     <developers>
@@ -122,9 +122,24 @@
                 <version>2.0.0</version>
                 <executions>
                     <execution>
-                        <phase>pre-site</phase>
+                        <id>attach-javadocs</id>
+                        <phase>verify</phase>
                         <goals>
-                            <goal>dokka</goal>
+                            <goal>javadocJar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.2.7</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
                         </goals>
                     </execution>
                 </executions>
